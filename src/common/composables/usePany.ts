@@ -1,3 +1,6 @@
+import { ElNotification } from "element-plus"
+import { h } from "vue"
+
 function initStarNotification() {
   setTimeout(() => {
     ElNotification({

@@ -1,5 +1,5 @@
-import type { Ref } from "vue"
 import { debounce } from "lodash-es"
+import { onBeforeUnmount, ref, type Ref } from "vue"
 
 /** 默认配置 */
 const DEFAULT_CONFIG = {

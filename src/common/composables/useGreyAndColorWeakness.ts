@@ -1,4 +1,5 @@
 import { useSettingsStore } from "@/pinia/stores/settings"
+import { watchEffect } from "vue"
 
 const GREY_MODE = "grey-mode"
 const COLOR_WEAKNESS = "color-weakness"

@@ -1,5 +1,6 @@
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { LayoutModeEnum } from "@@/constants/app-key"
+import { computed } from "vue"
 
 const settingsStore: any = useSettingsStore()
 

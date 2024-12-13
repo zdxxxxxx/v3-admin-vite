@@ -1,3 +1,5 @@
+import { ref, watch } from "vue"
+
 /** 项目标题 */
 const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE ?? "V3 Admin Vite"
 
@@ -10,7 +12,7 @@ function setTitle(title?: string) {
 }
 
 // 监听标题变化
-watch(dynamicTitle, (value, oldValue) => {
+watch(dynamicTitle, (value: string, oldValue: string) => {
   if (document && value !== oldValue) {
     document.title = value
   }
