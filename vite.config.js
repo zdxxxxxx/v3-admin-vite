@@ -96,21 +96,21 @@ export default defineConfig(({ mode }) => {
       // 自动生成 SvgIcon 组件和 SVG 雪碧图
       SvgComponent({
         iconDir: [resolve(__dirname, "src/common/assets/icons")],
-        preserveColor: resolve(__dirname, "src/common/assets/icons/preserve-color"),
-        dts: true,
-        dtsDir: resolve(__dirname, "types/auto")
+        preserveColor: resolve(__dirname, "src/common/assets/icons/preserve-color")
       }),
       // 原子化 CSS
       UnoCSS(),
       // 自动按需导入 API
       AutoImport({
         imports: ["vue", "vue-router", "pinia"],
-        dts: "types/auto/auto-imports.d.ts",
-        resolvers: [ElementPlusResolver()]
+        resolvers: [ElementPlusResolver()],
+        eslintrc: {
+          enabled: true,
+          filepath: "./eslintrc-auto-import.js"
+        }
       }),
       // 自动按需导入组件
       Components({
-        dts: "types/auto/components.d.ts",
         resolvers: [ElementPlusResolver()]
       })
     ],

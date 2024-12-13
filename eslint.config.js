@@ -1,4 +1,5 @@
 import antfu from "@antfu/eslint-config"
+import autoImportConfig from "./eslintrc-auto-import.js"
 
 // 更多自定义配置可查阅仓库：https://github.com/antfu/eslint-config
 export default antfu(
@@ -37,6 +38,11 @@ export default antfu(
       "no-debugger": "off",
       "symbol-description": "off",
       "antfu/if-newline": "off"
+    }
+  },
+  {
+    languageOptions: {
+      globals: autoImportConfig.globals
     }
   }
 )

@@ -1,6 +1,5 @@
 import { pinia } from "@/pinia"
 import { getCachedViews, getVisitedViews, setCachedViews, setVisitedViews } from "@@/utils/cache/local-storage"
-import { defineStore } from "pinia"
 import { useSettingsStore } from "./settings"
 
 export const useTagsViewStore = defineStore("tags-view", () => {

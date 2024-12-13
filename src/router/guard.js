@@ -5,7 +5,6 @@ import { isWhiteList } from "@/router/whitelist"
 import { setRouteChange } from "@@/composables/useRouteListener"
 import { useTitle } from "@@/composables/useTitle"
 import { getToken } from "@@/utils/cache/cookies"
-import { ElMessage } from "element-plus"
 import NProgress from "nprogress"
 
 NProgress.configure({ showSpinner: false })

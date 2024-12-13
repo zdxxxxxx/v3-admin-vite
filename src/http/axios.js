@@ -1,7 +1,6 @@
 import { useUserStore } from "@/pinia/stores/user"
 import { getToken } from "@@/utils/cache/cookies"
 import axios from "axios"
-import { ElMessage } from "element-plus"
 import { get, merge } from "lodash-es"
 
 /** 退出登录并强制刷新页面（会重定向到登录页） */

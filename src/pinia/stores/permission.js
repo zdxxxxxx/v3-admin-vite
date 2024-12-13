@@ -2,7 +2,6 @@ import { pinia } from "@/pinia"
 import { constantRoutes, dynamicRoutes } from "@/router"
 import { routerConfig } from "@/router/config"
 import { flatMultiLevelRoutes } from "@/router/helper"
-import { defineStore } from "pinia"
 
 function hasPermission(roles, route) {
   const routeRoles = route.meta?.roles

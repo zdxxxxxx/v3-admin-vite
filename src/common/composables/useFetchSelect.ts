@@ -1,5 +1,11 @@
 type OptionValue = string | number
 
+interface ApiResponseData<T> {
+  code: number
+  message: string
+  data: T
+}
+
 /** Select 需要的数据格式 */
 interface SelectOption {
   value: OptionValue

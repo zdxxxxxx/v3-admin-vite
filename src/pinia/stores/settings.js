@@ -1,7 +1,6 @@
 import { layoutsConfig } from "@/layouts/config"
 import { pinia } from "@/pinia"
 import { setLayoutsConfig } from "@@/utils/cache/local-storage"
-import { defineStore } from "pinia"
 
 export const useSettingsStore = defineStore("settings", () => {
   // 状态对象

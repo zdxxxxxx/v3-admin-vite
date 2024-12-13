@@ -1,7 +1,6 @@
 import { pinia } from "@/pinia"
 import { SIDEBAR_CLOSED, SIDEBAR_OPENED } from "@@/constants/app-key"
 import { getSidebarStatus, setSidebarStatus } from "@@/utils/cache/local-storage"
-import { defineStore } from "pinia"
 
 /** 设置侧边栏状态本地缓存 */
 function handleSidebarStatus(opened) {
