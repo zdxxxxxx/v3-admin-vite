@@ -1,16 +1,7 @@
-<script lang="ts" setup>
-import type { NotifyItem } from "./type"
+<script lang="js" setup>
 import { Bell } from "@element-plus/icons-vue"
 import { messageData, notifyData, todoData } from "./data"
 import List from "./List.vue"
-
-type TabName = "通知" | "消息" | "待办"
-
-interface DataItem {
-  name: TabName
-  type: "primary" | "success" | "warning" | "danger" | "info"
-  list: NotifyItem[]
-}
 
 /** 角标当前值 */
 const badgeValue = computed(() => data.value.reduce((sum, item) => sum + item.list.length, 0))
@@ -22,10 +13,10 @@ const badgeMax = 99
 const popoverWidth = 350
 
 /** 当前 Tab */
-const activeName = ref<TabName>("通知")
+const activeName = ref("通知")
 
 /** 所有数据 */
-const data = ref<DataItem[]>([
+const data = ref([
   // 通知数据
   {
     name: "通知",

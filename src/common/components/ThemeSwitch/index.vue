@@ -1,11 +1,10 @@
-<script lang="ts" setup>
-import type { ThemeName } from "@@/composables/useTheme"
+<script lang="js" setup>
 import { useTheme } from "@@/composables/useTheme"
 import { MagicStick } from "@element-plus/icons-vue"
 
 const { themeList, activeThemeName, setTheme } = useTheme()
 
-function handleChangeTheme({ clientX, clientY }: MouseEvent, themeName: ThemeName) {
+function handleChangeTheme({ clientX, clientY }, themeName) {
   const maxRadius = Math.hypot(
     Math.max(clientX, window.innerWidth - clientX),
     Math.max(clientY, window.innerHeight - clientY)
@@ -36,7 +35,7 @@ function handleChangeTheme({ clientX, clientY }: MouseEvent, themeName: ThemeNam
           v-for="(theme, index) in themeList"
           :key="index"
           :disabled="activeThemeName === theme.name"
-          @click="(e: MouseEvent) => handleChangeTheme(e, theme.name)"
+          @click="(e) => handleChangeTheme(e, theme.name)"
         >
           <span>{{ theme.title }}</span>
         </el-dropdown-item>

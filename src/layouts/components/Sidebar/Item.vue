@@ -1,16 +1,11 @@
-<script lang="ts" setup>
-import type { RouteRecordRaw } from "vue-router"
+<script lang="js" setup>
 import { isExternal } from "@@/utils/validate"
 import path from "path-browserify"
 import Link from "./Link.vue"
 
-interface Props {
-  item: RouteRecordRaw
-  basePath?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  basePath: ""
+const props = defineProps({
+  item: { type: Object },
+  basePath: { type: String, default: "" }
 })
 
 /** 是否始终显示根菜单 */
@@ -36,7 +31,7 @@ const theOnlyOneChild = computed(() => {
 })
 
 /** 解析路径 */
-function resolvePath(routePath: string) {
+function resolvePath(routePath) {
   switch (true) {
     case isExternal(routePath):
       return routePath

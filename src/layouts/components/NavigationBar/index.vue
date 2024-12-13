@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useAppStore } from "@/pinia/stores/app"
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { useUserStore } from "@/pinia/stores/user"

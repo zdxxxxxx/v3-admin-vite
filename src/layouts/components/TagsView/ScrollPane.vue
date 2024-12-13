@@ -1,16 +1,10 @@
-<script lang="ts" setup>
-import type { ElScrollbar } from "element-plus"
-import type { RouterLink } from "vue-router"
+<script lang="js" setup>
 import { useSettingsStore } from "@/pinia/stores/settings"
 import Screenfull from "@@/components/Screenfull/index.vue"
 import { useRouteListener } from "@@/composables/useRouteListener"
 import { ArrowLeft, ArrowRight } from "@element-plus/icons-vue"
 
-interface Props {
-  tagRefs: InstanceType<typeof RouterLink>[]
-}
-
-const props = defineProps<Props>()
+const props = defineProps({ tagRefs: { type: Array, default: () => [] } })
 
 const route = useRoute()
 
@@ -19,10 +13,10 @@ const settingsStore = useSettingsStore()
 const { listenerRouteChange } = useRouteListener()
 
 /** 滚动条组件元素的引用 */
-const scrollbarRef = ref<InstanceType<typeof ElScrollbar>>()
+const scrollbarRef = ref()
 
 /** 滚动条内容元素的引用 */
-const scrollbarContentRef = ref<HTMLDivElement>()
+const scrollbarContentRef = ref()
 
 /** 当前滚动条距离左边的距离 */
 let currentScrollLeft = 0
@@ -31,12 +25,12 @@ let currentScrollLeft = 0
 const translateDistance = 200
 
 /** 滚动时触发 */
-function scroll({ scrollLeft }: { scrollLeft: number }) {
+function scroll({ scrollLeft }) {
   currentScrollLeft = scrollLeft
 }
 
 /** 鼠标滚轮滚动时触发 */
-function wheelScroll({ deltaY }: WheelEvent) {
+function wheelScroll({ deltaY }) {
   if (deltaY.toString().startsWith("-")) {
     scrollTo("left")
   } else {
@@ -47,9 +41,9 @@ function wheelScroll({ deltaY }: WheelEvent) {
 /** 获取可能需要的宽度 */
 function getWidth() {
   // 可滚动内容的长度
-  const scrollbarContentRefWidth = scrollbarContentRef.value!.clientWidth
+  const scrollbarContentRefWidth = scrollbarContentRef.value.clientWidth
   // 滚动可视区宽度
-  const scrollbarRefWidth = scrollbarRef.value!.wrapRef!.clientWidth
+  const scrollbarRefWidth = scrollbarRef.value.wrapRef.clientWidth
   // 最后剩余可滚动的宽度
   const lastDistance = scrollbarContentRefWidth - scrollbarRefWidth - currentScrollLeft
 
@@ -57,7 +51,7 @@ function getWidth() {
 }
 
 /** 左右滚动 */
-function scrollTo(direction: "left" | "right", distance: number = translateDistance) {
+function scrollTo(direction, distance = translateDistance) {
   let scrollLeft = 0
   const { scrollbarContentRefWidth, scrollbarRefWidth, lastDistance } = getWidth()
   // 没有横向滚动条，直接结束
@@ -67,7 +61,7 @@ function scrollTo(direction: "left" | "right", distance: number = translateDista
   } else {
     scrollLeft = Math.min(currentScrollLeft + distance, currentScrollLeft + lastDistance)
   }
-  scrollbarRef.value!.setScrollLeft(scrollLeft)
+  scrollbarRef.value.setScrollLeft(scrollLeft)
 }
 
 /** 移动到目标位置 */
@@ -77,7 +71,7 @@ function moveTo() {
     // @ts-expect-error ignore
     if (route.path === tagRefs[i].$props.to.path) {
       // @ts-expect-error ignore
-      const el: HTMLElement = tagRefs[i].$el
+      const el = tagRefs[i].$el
       const offsetWidth = el.offsetWidth
       const offsetLeft = el.offsetLeft
       const { scrollbarRefWidth } = getWidth()

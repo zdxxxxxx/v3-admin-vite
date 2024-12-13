@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { useLayoutMode } from "@@/composables/useLayoutMode"
 import { removeLayoutsConfig } from "@@/utils/cache/local-storage"

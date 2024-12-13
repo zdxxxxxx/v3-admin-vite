@@ -1,11 +1,10 @@
-<script lang="ts" setup>
-import type { NotifyItem } from "./type"
-
-interface Props {
-  data: NotifyItem[]
-}
-
-const props = defineProps<Props>()
+<script lang="js" setup>
+const props = defineProps({
+  data: {
+    type: Array,
+    required: true
+  }
+})
 </script>
 
 <template>

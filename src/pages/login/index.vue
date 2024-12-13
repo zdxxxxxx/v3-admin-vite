@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-import type { FormInstance, FormRules } from "element-plus"
-import type { LoginRequestData } from "./apis/type"
+<script lang="js" setup>
 import { useUserStore } from "@/pinia/stores/user"
 import ThemeSwitch from "@@/components/ThemeSwitch/index.vue"
 import { Key, Loading, Lock, Picture, User } from "@element-plus/icons-vue"
@@ -15,7 +13,7 @@ const userStore = useUserStore()
 const { isFocus, handleBlur, handleFocus } = useFocus()
 
 /** 登录表单元素的引用 */
-const loginFormRef = ref<FormInstance | null>(null)
+const loginFormRef = ref(null)
 
 /** 登录按钮 Loading */
 const loading = ref(false)
@@ -24,14 +22,14 @@ const loading = ref(false)
 const codeUrl = ref("")
 
 /** 登录表单数据 */
-const loginFormData: LoginRequestData = reactive({
+const loginFormData = reactive({
   username: "admin",
   password: "12345678",
   code: ""
 })
 
 /** 登录表单校验规则 */
-const loginFormRules: FormRules = {
+const loginFormRules = {
   username: [
     { required: true, message: "请输入用户名", trigger: "blur" }
   ],

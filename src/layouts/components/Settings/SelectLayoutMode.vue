@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useLayoutMode } from "@@/composables/useLayoutMode"
 import { LayoutModeEnum } from "@@/constants/app-key"
 

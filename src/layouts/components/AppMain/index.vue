@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useSettingsStore } from "@/pinia/stores/settings"
 import { useTagsViewStore } from "@/pinia/stores/tags-view"
 import { Footer } from "../index"

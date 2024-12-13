@@ -1,8 +1,8 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import Modal from "./Modal.vue"
 
 /** 控制 modal 显隐 */
-const visible = ref<boolean>(false)
+const visible = ref(false)
 
 /** 打开 modal */
 function handleOpen() {

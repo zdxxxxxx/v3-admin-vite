@@ -1,5 +1,6 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useFullscreenLoading } from "@@/composables/useFullscreenLoading"
+import { ElMessage } from "element-plus"
 import { getErrorApi, getSuccessApi } from "./apis/use-fullscreen-loading"
 
 const svg = `
@@ -32,7 +33,7 @@ async function queryError() {
   try {
     await useFullscreenLoading(getErrorApi, options)()
   } catch (error) {
-    ElMessage.error((error as Error).message)
+    ElMessage.error((error).message)
   }
 }
 </script>

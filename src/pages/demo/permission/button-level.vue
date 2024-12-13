@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { checkPermission } from "@@/utils/permission"
 import SwitchRoles from "./components/SwitchRoles.vue"
 </script>

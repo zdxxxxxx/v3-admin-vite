@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-import type { ElScrollbar } from "element-plus"
-import type { RouteRecordName, RouteRecordRaw } from "vue-router"
+<script lang="js" setup>
 import { usePermissionStore } from "@/pinia/stores/permission"
 import { useDevice } from "@@/composables/useDevice"
 import { isExternal } from "@@/utils/validate"
@@ -9,20 +7,20 @@ import Footer from "./Footer.vue"
 import Result from "./Result.vue"
 
 /** 控制 modal 显隐 */
-const modelValue = defineModel<boolean>({ required: true })
+const modelValue = defineModel({ required: true })
 
 const router = useRouter()
 const { isMobile } = useDevice()
 
-const inputRef = ref<HTMLInputElement | null>(null)
-const scrollbarRef = ref<InstanceType<typeof ElScrollbar> | null>(null)
-const resultRef = ref<InstanceType<typeof Result> | null>(null)
+const inputRef = ref(null)
+const scrollbarRef = ref(null)
+const resultRef = ref(null)
 
-const keyword = ref<string>("")
-const result = shallowRef<RouteRecordRaw[]>([])
-const activeRouteName = ref<RouteRecordName | undefined>(undefined)
+const keyword = ref("")
+const result = shallowRef([])
+const activeRouteName = ref(undefined)
 /** 是否按下了上键或下键（用于解决和 mouseenter 事件的冲突） */
-const isPressUpOrDown = ref<boolean>(false)
+const isPressUpOrDown = ref(false)
 
 /** 控制搜索对话框宽度 */
 const modalWidth = computed(() => (isMobile.value ? "80vw" : "40vw"))
@@ -40,7 +38,7 @@ const handleSearch = debounce(() => {
 }, 500)
 
 /** 将树形菜单扁平化为一维数组，用于菜单搜索 */
-function flatTree(arr: RouteRecordRaw[], result: RouteRecordRaw[] = []) {
+function flatTree(arr, result = []) {
   arr.forEach((item) => {
     result.push(item)
     item.children && flatTree(item.children, result)
@@ -59,7 +57,7 @@ function handleClose() {
 }
 
 /** 根据下标位置进行滚动 */
-function scrollTo(index: number) {
+function scrollTo(index) {
   if (!resultRef.value) return
   const scrollTop = resultRef.value.getScrollTop(index)
   // 手动控制 el-scrollbar 滚动条滚动，设置滚动条到顶部的距离

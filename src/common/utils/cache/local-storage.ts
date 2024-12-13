@@ -1,7 +1,5 @@
 // 统一处理 localStorage
 
-import type { LayoutsConfig } from "@/layouts/config"
-import type { TagView } from "@/pinia/stores/tags-view"
 import type { ThemeName } from "@@/composables/useTheme"
 import type { SidebarClosed, SidebarOpened } from "@@/constants/app-key"
 import { CacheKey } from "@@/constants/cache-key"
@@ -9,9 +7,9 @@ import { CacheKey } from "@@/constants/cache-key"
 // #region 系统布局配置
 export function getLayoutsConfig() {
   const json = localStorage.getItem(CacheKey.CONFIG_LAYOUT)
-  return json ? (JSON.parse(json) as LayoutsConfig) : null
+  return json ? (JSON.parse(json) as any) : null
 }
-export function setLayoutsConfig(settings: LayoutsConfig) {
+export function setLayoutsConfig(settings: any) {
   localStorage.setItem(CacheKey.CONFIG_LAYOUT, JSON.stringify(settings))
 }
 export function removeLayoutsConfig() {
@@ -40,9 +38,9 @@ export function setActiveThemeName(themeName: ThemeName) {
 // #region 标签栏
 export function getVisitedViews() {
   const json = localStorage.getItem(CacheKey.VISITED_VIEWS)
-  return JSON.parse(json ?? "[]") as TagView[]
+  return JSON.parse(json ?? "[]") as any[]
 }
-export function setVisitedViews(views: TagView[]) {
+export function setVisitedViews(views: any[]) {
   views.forEach((view) => {
     // 删除不必要的属性，防止 JSON.stringify 处理到循环引用
     delete view.matched

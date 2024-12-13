@@ -7,7 +7,7 @@ const classList = document.documentElement.classList
 
 /** 初始化 */
 function initGreyAndColorWeakness() {
-  const settingsStore = useSettingsStore()
+  const settingsStore: any = useSettingsStore()
   watchEffect(() => {
     classList.toggle(GREY_MODE, settingsStore.showGreyMode)
     classList.toggle(COLOR_WEAKNESS, settingsStore.showColorWeakness)

@@ -1,7 +1,7 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useWatermark } from "@@/composables/useWatermark"
 
-const localRef = ref<HTMLElement | null>(null)
+const localRef = ref(null)
 const { setWatermark, clearWatermark } = useWatermark(localRef)
 const { setWatermark: setGlobalWatermark, clearWatermark: clearGlobalWatermark } = useWatermark()
 </script>

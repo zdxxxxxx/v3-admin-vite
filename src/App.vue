@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script lang="js" setup>
 import { useGreyAndColorWeakness } from "@@/composables/useGreyAndColorWeakness"
 import { usePany } from "@@/composables/usePany"
 import { useTheme } from "@@/composables/useTheme"

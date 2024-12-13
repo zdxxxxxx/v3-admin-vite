@@ -1,12 +1,8 @@
-<script lang="ts" setup>
-import type { RouteRecordName, RouteRecordRaw } from "vue-router"
-
-interface Props {
-  data: RouteRecordRaw[]
-  isPressUpOrDown: boolean
-}
-
-const props = defineProps<Props>()
+<script lang="js" setup>
+const props = defineProps({
+  data: { type: Array, default: () => [] },
+  isPressUpOrDown: { type: Boolean }
+})
 
 /** 选中的菜单 */
 const modelValue = defineModel<RouteRecordName | undefined>({ required: true })
@@ -16,7 +12,7 @@ const instance = getCurrentInstance()
 const scrollbarHeight = ref<number>(0)
 
 /** 菜单的样式 */
-function itemStyle(item: RouteRecordRaw) {
+function itemStyle(item) {
   const flag = item.name === modelValue.value
   return {
     background: flag ? "var(--el-color-primary)" : "",
@@ -25,7 +21,7 @@ function itemStyle(item: RouteRecordRaw) {
 }
 
 /** 鼠标移入 */
-function handleMouseenter(item: RouteRecordRaw) {
+function handleMouseenter(item) {
   // 如果上键或下键与 mouseenter 事件同时生效，则以上下键为准，不执行该函数的赋值逻辑
   if (props.isPressUpOrDown) return
   modelValue.value = item.name
@@ -38,8 +34,8 @@ function getScrollbarHeight() {
 }
 
 /** 根据下标计算到顶部的距离 */
-function getScrollTop(index: number) {
-  const currentInstance = instance?.proxy?.$refs[`resultItemRef${index}`] as HTMLDivElement[]
+function getScrollTop(index) {
+  const currentInstance = instance?.proxy?.$refs[`resultItemRef${index}`]
   if (!currentInstance) return 0
   const currentRef = currentInstance[0]
   // 128 = 两个 result-item （56 + 56 = 112）高度与上下 margin（8 + 8 = 16）大小之和
