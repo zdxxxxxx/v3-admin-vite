@@ -1,8 +1,6 @@
-import { ElNotification } from "element-plus"
-import { h } from "vue"
-
 function initStarNotification() {
   setTimeout(() => {
+    // eslint-disable-next-line no-undef
     ElNotification({
       title: "为爱发电！",
       type: "success",
@@ -22,6 +20,7 @@ function initStarNotification() {
 
 function initStoreNotification() {
   setTimeout(() => {
+    // eslint-disable-next-line no-undef
     ElNotification({
       title: "懒人服务？",
       type: "warning",

@@ -1,7 +1,7 @@
 <script lang="js" setup>
+import { useRouteListener } from "@/common/composables/useRouteListener"
 import { useSettingsStore } from "@/pinia/stores/settings"
 import Screenfull from "@@/components/Screenfull/index.vue"
-import { useRouteListener } from "@@/composables/useRouteListener"
 import { ArrowLeft, ArrowRight } from "@element-plus/icons-vue"
 
 const props = defineProps({ tagRefs: { type: Array, default: () => [] } })

@@ -1,7 +1,7 @@
 <script lang="js" setup>
+import { useRouteListener } from "@/common/composables/useRouteListener"
 import { usePermissionStore } from "@/pinia/stores/permission"
 import { useTagsViewStore } from "@/pinia/stores/tags-view"
-import { useRouteListener } from "@@/composables/useRouteListener"
 import { Close } from "@element-plus/icons-vue"
 import path from "path-browserify"
 import ScrollPane from "./ScrollPane.vue"
